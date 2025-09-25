@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="pokedex">
+        <h1 class="pokedex__titulo">Mi Pokedex</h1>
+        <p class="pokedex__autor">Por David Jiménez</p>
+        <p class="pokedex__curso">Programación Web</p>
+        <div class="pokedex__lista-container">
+            <ul class="pokedex__lista">
+                </ul>
+        </div>
+        <div class="pokedex__detalle-overlay" id="detalleOverlay">
+            <div class="pokedex__detalle-tarjeta" id="detalleTarjeta">
+                <button class="pokedex__detalle-cerrar" onclick="hidePokemonDetail()">← Volver</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
