@@ -1,207 +1,153 @@
-/* Parte V: Responsividad y video explicativo */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-}
+/* style.css */
+/* Reset ligero */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* --- BEM: bloque principal --- */
 .pokedex {
-    max-width: 1200px;
-    margin: auto;
-    text-align: center;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: linear-gradient(180deg,#f7f9fc,#e9f0fb);
+  color:#111;
+  padding: 16px;
 }
 
-/* Parte I: Estructura HTML y CSS BEM */
-.pokedex__titulo {
-    font-size: 2.5rem;
-    color: #cc0000;
-    margin-bottom: 0;
+/* Header */
+.pokedex__header {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  align-items:flex-start;
 }
 
-/* Estilo para el nombre del autor */
-.pokedex__autor {
-    font-size: 1.2rem; /* Fuente más pequeña que el título */
-    color: #555;
-    margin: 5px 0 0 0;
+.pokedex__title {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
 }
 
-/* Estilo para el nombre del curso */
-.pokedex__curso {
-    font-size: 0.9rem; /* Fuente más pequeña aún */
-    color: #777;
-    margin: 0 0 20px 0;
+.pokedex__controls {
+  display:flex;
+  gap:8px;
+  width:100%;
 }
 
-/* Aumento el tamaño mínimo de las tarjetas a 220px para hacerlas más grandes */
-.pokedex__lista {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-    gap: 20px;
+.pokedex__search {
+  flex:1;
+  padding:8px 10px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.12);
 }
 
-/* Usamos Flexbox para centrar perfectamente todos los elementos dentro de la tarjeta */
-.pokemon {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    transition: transform 0.2s;
-    cursor: pointer;
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
+.pokedex__btn {
+  padding:8px 12px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  background:#2979ff;
+  color:white;
 }
 
-.pokemon:hover {
-    transform: translateY(-5px);
+.pokedex__btn--secondary {
+  background:#00c853;
 }
 
-.pokemon__nombre {
-    text-transform: capitalize;
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
+/* Main layout */
+.pokedex__main {
+  display:grid;
+  grid-template-columns: 1fr 280px;
+  gap: 16px;
+  align-items:start;
 }
 
-.pokemon__imagen {
-    max-width: 100%;
-    height: auto;
+/* Pokemon list (grid de tarjetas) */
+.pokemon-list {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
-.pokemon__tipos {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 5px;
+/* Pokemon card (BEM) */
+.pokemon-card {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding:12px;
+  border-radius:10px;
+  background:white;
+  box-shadow:0 4px 12px rgba(16,24,40,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
 }
 
-.pokemon__tipo {
-    background-color: #eee;
-    padding: 3px 8px;
-    border-radius: 5px;
-    font-size: 0.8em;
-    text-transform: capitalize;
+.pokemon-card:hover { transform: translateY(-4px); box-shadow:0 8px 20px rgba(16,24,40,0.08); }
+
+.pokemon-card__image {
+  width:96px; height:96px; object-fit:contain;
 }
 
-/* Estilos para la tarjeta de detalle (overlay) */
-.pokedex__detalle-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.3s ease-in-out;
+.pokemon-card__name {
+  text-transform: capitalize;
+  font-weight:600;
 }
 
-.pokedex__detalle-overlay--visible {
-    visibility: visible;
-    opacity: 1;
+.pokemon-card__types {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  justify-content:center;
 }
 
-.pokedex__detalle-tarjeta {
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    position: relative;
+/* modifier: favorito (ejemplo BEM) */
+.pokemon-card--favorite {
+  border-color: #ffeb3b;
 }
 
-.pokedex__detalle-cerrar {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: #555;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.2s;
+/* Tip badge */
+.type-badge {
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:0.75rem;
+  text-transform:capitalize;
+  border:1px solid rgba(0,0,0,0.06);
 }
 
-.pokedex__detalle-cerrar:hover {
-    background-color: #eee;
+/* Favorites aside */
+.favorites {
+  background:linear-gradient(180deg,#fff,#fbfbfe);
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.04);
+  height: fit-content;
 }
 
-.detalle__nombre {
-    text-transform: capitalize;
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: #cc0000;
+.favorites__title { font-weight:700; margin-bottom:8px; }
+.favorites__list { display:flex; flex-direction:column; gap:8px; list-style:none; padding:0; margin:0; }
+.favorites__item { display:flex; gap:8px; align-items:center; }
+
+/* Detail modal */
+.detail { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background: rgba(2,6,23,0.5); padding:16px; z-index:50; }
+.detail--hidden { display:none; }
+.detail__card { background:white; border-radius:12px; padding:18px; width: min(720px, 96%); box-shadow:0 12px 40px rgba(2,6,23,0.2); position:relative; }
+.detail__close { position:absolute; right:12px; top:12px; border:none; background:transparent; font-size:1.1rem; cursor:pointer; }
+
+.detail__content { display:grid; grid-template-columns: 200px 1fr; gap:12px; align-items:start; }
+.detail__image { width:100%; height:200px; object-fit:contain; }
+
+/* Footer */
+.pokedex__footer { text-align:center; font-size:0.9rem; opacity:0.8; margin-top:8px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .pokedex__main { grid-template-columns: 1fr; }
+  .pokemon-list { grid-template-columns: repeat(2,1fr); }
+  .detail__content { grid-template-columns: 1fr; }
 }
 
-.detalle__numero {
-    font-size: 1.2em;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.detalle__imagen {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    background-color: #eee;
-    border-radius: 50%;
-    margin: 0 auto 20px auto;
-    border: 2px dashed #ccc;
-}
-
-.detalle__tipos {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.detalle__tipo {
-    background-color: #ddd;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.9em;
-    text-transform: capitalize;
-    font-weight: bold;
-}
-
-.detalle__stats {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    text-align: left;
-}
-
-.detalle__stat-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px dotted #ccc;
-}
-
-.detalle__stat-item:last-child {
-    border-bottom: none;
-}
-
-.detalle__stat-nombre {
-    font-weight: bold;
-    text-transform: capitalize;
-}
-
-.detalle__stat-valor {
-    color: #555;
+@media (max-width: 480px) {
+  .pokemon-list { grid-template-columns: 1fr; }
+  .pokedex__controls { flex-direction:column; }
 }
