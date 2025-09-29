@@ -6,8 +6,7 @@
 
 ---
 
-## ✅ Resumen de lo implementado en base a los requisitos del Primer Examen Parcial de
-## Programación Web.
+## ✅ Resumen de lo implementado en base a los requisitos del Primer Examen Parcial de Programación Web
 
 **Parte I – Estructura HTML y CSS BEM (25 pts)**  
 - Estructura semántica en `index.html` (header, main, aside, footer).  
