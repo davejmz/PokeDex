@@ -29,19 +29,6 @@
 - CSS con media queries para dispositivos móviles y pantallas grandes.  
 - Se incluye un guión para un video de 10 minutos con el que puedes presentar la entrega.
 
----
-
-## 📁 Estructura del repositorio
-
-
-/pokedex
-├── index.html
-├── css/
-│ └── style.css
-├── script/
-│ └── app.js
-└── README.md
-
 ## 🚀 Cómo ejecutar localmente
 1. Clona tu repositorio:
    ```bash
