@@ -13,7 +13,7 @@
   padding: 16px;
 }
 
-/* Header */
+/* BEM */
 .pokedex__header { display:flex; flex-direction:column; gap:8px; }
 .pokedex__title { font-size: 1.6rem; }
 .pokedex__controls { display:flex; gap:8px; flex-wrap:wrap; }

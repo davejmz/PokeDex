@@ -16,12 +16,12 @@ const detailModal = document.getElementById('detailModal');
 const detailContent = document.getElementById('detailContent');
 const detailClose = document.getElementById('detailClose');
 
-// Favoritos con localStorage
+// Función para manejar Favoritos con localStorage
 let favorites = loadFavorites();
 function saveFavorites() { localStorage.setItem('pokedex_favorites', JSON.stringify(favorites)); }
 function loadFavorites() { return JSON.parse(localStorage.getItem('pokedex_favorites') || '[]'); }
 
-// Fetch helpers
+// Función Fetch
 async function fetchJSON(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error('Error en fetch');
@@ -40,13 +40,13 @@ async function loadPokemon(limit = 20) {
   }
 }
 
-// Obtener Pokémon por nombre o ID
+// Función para obtener Pokémon por nombre o ID
 async function getPokemon(query) {
   const q = String(query).trim().toLowerCase();
   return fetchJSON(`${API_BASE}${q}`);
 }
 
-// Render lista
+// Renderizado Dinámico - Lista
 function renderPokemonList(pokemonArray) {
   pokemonListEl.innerHTML = '';
   pokemonArray.forEach(p => pokemonListEl.appendChild(createPokemonCard(p)));
@@ -114,7 +114,7 @@ function openDetail(pokemonData) {
 detailClose.addEventListener('click', () => detailModal.classList.add('detail--hidden'));
 detailModal.addEventListener('click', (e) => { if (e.target === detailModal) detailModal.classList.add('detail--hidden'); });
 
-// Favoritos
+// Función Favoritos
 function toggleFavorite(name) {
   if (favorites.includes(name)) favorites = favorites.filter(f => f !== name);
   else favorites.push(name);
