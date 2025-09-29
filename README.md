@@ -28,6 +28,15 @@
 **Parte V – Responsividad y video explicativo (20 pts)**  
 - CSS con media queries para dispositivos móviles y pantallas grandes.  
 
+## 📊 Comportamiento de la app
+
+- **Al abrir la app:** se cargan los primeros **20 Pokémon**.  
+- **Botón "Cargar todos (151)":** carga los Pokémon de la primera generación completa.  
+- **Buscar:** permite buscar por nombre o ID (ejemplo: `pikachu` o `25`).  
+- **Detalle:** al hacer clic en “Ver detalle”, se abre un modal con estadísticas y datos del Pokémon.  
+- **Favoritos:** se pueden añadir/quitar y se guardan en localStorage.  
+
+
 ## 🚀 Cómo ejecutar localmente
 1. Clona tu repositorio:
    ```bash

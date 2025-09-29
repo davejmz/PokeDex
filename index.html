@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mini PokeDex</title>
-  <!-- ✅ CSS en raíz -->
+  <!-- ✅ CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="pokedex">
-    <!-- Header: Parte I - estructura HTML y uso BEM -->
+    <!-- Header -->
     <header class="pokedex__header">
       <h1 class="pokedex__title">Mini PokeDex</h1>
 
-      <!-- Campo de búsqueda -->
+      <!-- Controles de búsqueda -->
       <div class="pokedex__controls">
         <input id="searchInput" class="pokedex__search" type="text" placeholder="Buscar Pokémon por nombre o ID" />
         <button id="btnSearch" class="pokedex__btn">Buscar</button>
@@ -22,27 +22,25 @@
     </header>
 
     <main class="pokedex__main">
-      <!-- Lista de Pokémon -->
+      <!-- Lista dinámica -->
       <section id="pokemonList" class="pokemon-list" aria-live="polite">
-        <!-- Tarjetas se insertan aquí por JS -->
+        <!-- JS insertará las tarjetas -->
       </section>
 
       <!-- Favoritos -->
       <aside class="favorites" id="favorites">
         <h2 class="favorites__title">Mis Favoritos</h2>
         <ul class="favorites__list" id="favoritesList">
-          <!-- Favoritos se renderizan aquí -->
+          <!-- JS insertará favoritos -->
         </ul>
       </aside>
     </main>
 
-    <!-- Tarjeta de detalle flotante -->
+    <!-- Detalle flotante -->
     <div id="detailModal" class="detail detail--hidden" role="dialog" aria-modal="true">
       <div class="detail__card">
         <button id="detailClose" class="detail__close" aria-label="Cerrar detalle">✕</button>
-        <div id="detailContent" class="detail__content">
-          <!-- Contenido de detalle insertado por JS -->
-        </div>
+        <div id="detailContent" class="detail__content"></div>
       </div>
     </div>
 
@@ -51,7 +49,7 @@
     </footer>
   </div>
 
-  <!-- ✅ JS en raíz -->
+  <!-- ✅ JS -->
   <script src="script.js" defer></script>
 </body>
 </html>
