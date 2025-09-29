@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Mini PokeDex</title>
-  <link rel="stylesheet" href="css/style.css">
+  <!-- ✅ CSS en raíz -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="pokedex">
@@ -12,21 +13,21 @@
     <header class="pokedex__header">
       <h1 class="pokedex__title">Mini PokeDex</h1>
 
-      <!-- Campo de búsqueda: requisito funcional 1 -->
+      <!-- Campo de búsqueda -->
       <div class="pokedex__controls">
         <input id="searchInput" class="pokedex__search" type="text" placeholder="Buscar Pokémon por nombre o ID" />
         <button id="btnSearch" class="pokedex__btn">Buscar</button>
-        <button id="btnLoad" class="pokedex__btn pokedex__btn--secondary">Cargar 20 Pokémon</button>
+        <button id="btnLoad" class="pokedex__btn pokedex__btn--secondary">Cargar todos (151)</button>
       </div>
     </header>
 
     <main class="pokedex__main">
-      <!-- Sección lista de Pokémon: Parte III (renderizado dinámico) -->
+      <!-- Lista de Pokémon -->
       <section id="pokemonList" class="pokemon-list" aria-live="polite">
         <!-- Tarjetas se insertan aquí por JS -->
       </section>
 
-      <!-- Sección favoritos: Parte IV (persistencia en localStorage) -->
+      <!-- Favoritos -->
       <aside class="favorites" id="favorites">
         <h2 class="favorites__title">Mis Favoritos</h2>
         <ul class="favorites__list" id="favoritesList">
@@ -35,7 +36,7 @@
       </aside>
     </main>
 
-    <!-- Tarjeta de detalle flotante: requisito 2 -->
+    <!-- Tarjeta de detalle flotante -->
     <div id="detailModal" class="detail detail--hidden" role="dialog" aria-modal="true">
       <div class="detail__card">
         <button id="detailClose" class="detail__close" aria-label="Cerrar detalle">✕</button>
@@ -50,6 +51,7 @@
     </footer>
   </div>
 
-  <script src="script/app.js" defer></script>
+  <!-- ✅ JS en raíz -->
+  <script src="script.js" defer></script>
 </body>
 </html>

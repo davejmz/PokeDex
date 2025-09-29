@@ -1,13 +1,11 @@
-// app.js
-// -------------------------------
-// Mini PokeDex - app.js
+
+// Mini PokeDex - app.js por David Cristopher Coronado Jiménez Cabrera
 // Implementa: fetch a PokeAPI, render dinámico, búsqueda, detalle, favoritos (localStorage), y eventos DOM.
-// Cumple con las Partes I-V del enunciado.
 // -------------------------------
 
 const API_BASE = 'https://pokeapi.co/api/v2/pokemon/';
 
-// === Elementos del DOM (Parte I y III: estructura y renderizado) ===
+// Elementos del DOM (Parte I y III: estructura y renderizado)
 const pokemonListEl = document.getElementById('pokemonList');
 const btnLoad = document.getElementById('btnLoad');
 const btnSearch = document.getElementById('btnSearch');
@@ -18,7 +16,7 @@ const detailModal = document.getElementById('detailModal');
 const detailContent = document.getElementById('detailContent');
 const detailClose = document.getElementById('detailClose');
 
-// === Gestión de favoritos (Parte IV: persistencia en localStorage) ===
+// Gestión de favoritos (Parte IV: persistencia en localStorage)
 let favorites = loadFavorites(); // array de nombres/ids
 
 function saveFavorites() {
@@ -35,18 +33,18 @@ function loadFavorites() {
   }
 }
 
-// === FETCH helpers (Parte II: consumo de la API) ===
+// FETCH helpers (Parte II: consumo de la API)
 async function fetchJSON(url) {
   const res = await fetch(url);
   if (!res.ok) throw new Error('Error en fetch: ' + res.status);
   return res.json();
 }
 
-// Obtiene la lista (primeros 20) - usa endpoint con limit
-async function loadInitialPokemon(limit = 20) {
+// Obtiene la lista (primeros 100) - usa endpoint con limit
+async function loadInitialPokemon(limit = 100) {
   try {
     const data = await fetchJSON(`${API_BASE}?limit=${limit}`);
-    const results = data.results; // array {name, url}
+    const results = data.results;
     // Para renderizar tarjetas necesitamos datos detallados: haremos fetch en paralelo
     const detailPromises = results.map(r => fetchJSON(r.url));
     const detailed = await Promise.all(detailPromises);
@@ -57,7 +55,7 @@ async function loadInitialPokemon(limit = 20) {
   }
 }
 
-// Obtener un Pokémon por nombre o id (búsqueda)
+// Para la búsqueda de un Pokémon por nombre o id 
 async function getPokemon(query) {
   try {
     const q = String(query).trim().toLowerCase();
@@ -68,7 +66,7 @@ async function getPokemon(query) {
   }
 }
 
-// === RENDER - Parte III: renderizado dinámico ===
+// RENDER - Parte III: renderizado dinámico
 function renderPokemonList(pokemonArray) {
   // Limpia lista
   pokemonListEl.innerHTML = '';
@@ -97,7 +95,7 @@ function createPokemonCard(pokemonData) {
     </div>
   `;
 
-  // Evento: abrir detalle (Parte III - detalle)
+  // Abrir detalle (Parte III - detalle)
   article.querySelector('.btn-detail').addEventListener('click', async (e) => {
     try {
       openDetail(pokemonData);
@@ -106,11 +104,11 @@ function createPokemonCard(pokemonData) {
     }
   });
 
-  // Evento: toggle favorito (Parte IV)
+  // Toggle favorito (Parte IV)
   article.querySelector('.btn-fav').addEventListener('click', (e) => {
     const name = e.currentTarget.dataset.name;
     toggleFavorite(name);
-    // actualizar texto del botón y estilo
+
     e.currentTarget.textContent = favorites.includes(name) ? 'Quitar ⭐' : 'Fav ⭐';
     if (favorites.includes(name)) article.classList.add('pokemon-card--favorite'); else article.classList.remove('pokemon-card--favorite');
     renderFavorites();
@@ -205,14 +203,14 @@ function renderFavorites() {
   });
 }
 
-// === Eventos UI (Parte III: eventos) ===
-btnLoad.addEventListener('click', () => loadInitialPokemon(20));
+// Eventos UI (Parte III: eventos)
+btnLoad.addEventListener('click', () => loadInitialPokemon(151));
 btnSearch.addEventListener('click', async () => {
   const q = searchInput.value.trim();
   if (!q) return alert('Escribe nombre o ID para buscar.');
   try {
     const p = await getPokemon(q);
-    renderPokemonList([p]); // mostrar solo el resultado
+    renderPokemonList([p]);
   } catch (err) {
     alert(err.message);
   }
