@@ -6,7 +6,8 @@
 
 ---
 
-## ✅ Resumen de lo implementado (cumple los requisitos del PDF)
+## ✅ Resumen de lo implementado en base a los requisitos del Primer Examen Parcial de
+## Programación Web.
 
 **Parte I – Estructura HTML y CSS BEM (25 pts)**  
 - Estructura semántica en `index.html` (header, main, aside, footer).  
@@ -27,7 +28,6 @@
 
 **Parte V – Responsividad y video explicativo (20 pts)**  
 - CSS con media queries para dispositivos móviles y pantallas grandes.  
-- Se incluye un guión para un video de 10 minutos con el que puedes presentar la entrega.
 
 ## 🚀 Cómo ejecutar localmente
 1. Clona tu repositorio:
