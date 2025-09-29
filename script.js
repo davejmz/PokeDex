@@ -1,5 +1,6 @@
 // =========================
-// Mini PokeDex - script.js
+// Mini PokeDex - script.js, por David Cristopher Coronado Jiménez Cabrera
+// Carné 202401777
 // =========================
 
 const API_BASE = 'https://pokeapi.co/api/v2/pokemon/';
@@ -82,7 +83,7 @@ function createPokemonCard(pokemonData) {
   return article;
 }
 
-// Modal detalle
+// Detalle de modelos
 function openDetail(pokemonData) {
   detailContent.innerHTML = `
     <div style="text-align:center;">
